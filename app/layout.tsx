@@ -33,6 +33,10 @@ export const metadata: Metadata = {
   description:
     "Curated corporate gifts for every occasion — employee welcome kits, festive hampers, executive gifts & sustainable gifting with pan-India delivery and custom branding.",
   robots: { index: true, follow: true },
+  icons: {
+    icon: "/logo-monogram.png",
+    apple: "/logo-monogram.png",
+  },
   openGraph: {
     title: "The Corporate Baklawa",
     description:

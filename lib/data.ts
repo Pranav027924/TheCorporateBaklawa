@@ -44,9 +44,12 @@ export const site = {
   brand: "The Corporate Baklawa",
   tagline: "Premium corporate gifting that strengthens relationships.",
 
-  // IMAGE SLOTS
-  logo: "", // color logo for light backgrounds (navbar over scrolled state)
-  logoWhite: "", // white logo for dark backgrounds (hero navbar, footer)
+  // LOGO SLOTS — drop transparent PNGs in /public (see public/README-LOGOS.txt),
+  // or replace with full ImageKit URLs. Empty → brand name renders as text.
+  logo: "/logo-wordmark.png", // full wordmark, color — light backgrounds
+  logoWhite: "/logo-wordmark-ivory.png", // full wordmark, ivory — footer (dark)
+  monogram: "/logo-monogram.png", // TCB monogram, color — favicon / light accents
+  monogramWhite: "/logo-monogram-ivory.png", // TCB monogram, ivory — navbar (dark)
   ogImage: "", // social share image (PRD §9)
 
   // CONTACT — replace placeholders (PRD §13 open questions 3 & 4)

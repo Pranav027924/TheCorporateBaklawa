@@ -1,6 +1,7 @@
 import { footer, site, waLink } from "@/lib/data";
 import { IconInstagram, IconLinkedIn, IconWhatsApp } from "./icons";
 import GoldDivider from "./GoldDivider";
+import LogoImg from "./LogoImg";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -12,17 +13,14 @@ export default function Footer() {
       <div className={`${styles.grid} container`}>
         {/* Col 1 — brand */}
         <div className={styles.brandCol}>
-          {site.logoWhite ? (
-            <img
-              src={site.logoWhite}
-              alt={site.brand}
-              className={styles.logo}
-              width={180}
-              height={44}
-            />
-          ) : (
-            <span className={styles.logoText}>{site.brand}</span>
-          )}
+          <LogoImg
+            src={site.logoWhite}
+            alt={site.brand}
+            className={styles.logo}
+            fallbackClassName={styles.logoText}
+            width={150}
+            height={120}
+          />
           <p className={styles.tagline}>{footer.tagline}</p>
           <ul className={styles.social}>
             <li>

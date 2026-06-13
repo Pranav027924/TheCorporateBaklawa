@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { navLinks, site } from "@/lib/data";
+import LogoImg from "./LogoImg";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
@@ -32,8 +33,6 @@ export default function Navbar() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  const logoSrc = scrolled ? site.logoWhite || site.logo : site.logoWhite;
-
   return (
     <header
       className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}
@@ -41,17 +40,16 @@ export default function Navbar() {
     >
       <nav className={`${styles.inner} container`} aria-label="Primary">
         <a href="#hero" className={styles.logoLink} aria-label={site.brand}>
-          {logoSrc ? (
-            <img
-              src={logoSrc}
-              alt={site.brand}
-              className={styles.logoImg}
-              width={180}
-              height={44}
-            />
-          ) : (
-            <span className={styles.logoText}>{site.brand}</span>
-          )}
+          {/* Navbar is dark in both states (over hero + scrolled green),
+              so the ivory monogram is used throughout. */}
+          <LogoImg
+            src={site.monogramWhite}
+            alt={site.brand}
+            className={styles.logoImg}
+            fallbackClassName={styles.logoText}
+            width={48}
+            height={48}
+          />
         </a>
 
         <ul className={styles.links}>
