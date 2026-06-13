@@ -1,0 +1,39 @@
+.section {
+  background: var(--forest-green);
+  padding-block: var(--space-2xl);
+}
+
+.band {
+  text-align: center;
+  max-width: 760px;
+  margin-inline: auto;
+  margin-bottom: var(--space-xl);
+}
+
+.eyebrow {
+  color: var(--antique-gold);
+  margin-bottom: var(--space-xs);
+}
+
+.headline {
+  color: var(--ivory);
+  margin-bottom: var(--space-md);
+  margin-inline: auto;
+}
+
+.subtext {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.0625rem;
+  color: rgba(248, 245, 239, 0.75);
+  max-width: 48ch;
+  margin-inline: auto;
+  margin-bottom: var(--space-lg);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+}

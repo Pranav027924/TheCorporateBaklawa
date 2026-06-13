@@ -1,0 +1,229 @@
+/* =========================================================================
+   The Corporate Baklawa — Design System (PRD §2)
+   Plain CSS + custom properties. Component styles live in *.module.css.
+   ========================================================================= */
+
+:root {
+  /* --- Color palette (PRD §2.1) --- */
+  --forest-green: #1a3c2e;
+  --deep-maroon: #5c1a1a;
+  --antique-gold: #c9a84c;
+  --ivory: #f8f5ef;
+  --charcoal: #1f1f1f;
+  --warm-gray: #ddd8cf;
+  --white: #ffffff;
+  --error-red: #c0392b;
+
+  /* Overlays */
+  --hero-overlay: rgba(26, 60, 46, 0.65);
+
+  /* --- Typography (PRD §2.2) --- */
+  /* Font family CSS variables are injected by next/font in layout.tsx:
+     --font-display (Cormorant Garamond), --font-sans (Montserrat),
+     --font-body (Lato). Fallbacks declared here for safety. */
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Montserrat", system-ui, -apple-system, sans-serif;
+  --font-body: "Lato", system-ui, -apple-system, sans-serif;
+
+  /* --- Spacing scale (PRD §2.3) --- */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 7rem;
+
+  /* --- Border radius (PRD §2.4) --- */
+  --radius-card: 4px;
+  --radius-button: 2px;
+  --radius-pill: 100px;
+
+  /* --- Layout --- */
+  --content-max: 1280px; /* PRD §7 wide breakpoint */
+  --navbar-height: 76px;
+
+  /* --- Motion --- */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Reset / base --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Offset anchored scroll targets so the sticky navbar doesn't cover them */
+  scroll-padding-top: var(--navbar-height);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--charcoal);
+  background: var(--ivory);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+/* --- Shared layout helpers --- */
+.container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-inline: var(--space-lg);
+  }
+}
+
+/* --- Shared typographic primitives --- */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.1;
+}
+
+/* --- Buttons (shared) --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  padding: 0.95rem 1.75rem;
+  border-radius: var(--radius-button);
+  border: 1px solid transparent;
+  transition: transform 150ms var(--ease), box-shadow 150ms var(--ease),
+    background-color 200ms var(--ease), color 200ms var(--ease),
+    border-color 200ms var(--ease);
+  text-align: center;
+}
+
+.btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(31, 31, 31, 0.18);
+}
+
+.btn-primary {
+  background: var(--forest-green);
+  color: var(--ivory);
+}
+
+.btn-gold {
+  background: var(--antique-gold);
+  color: var(--charcoal);
+}
+
+.btn-outline-light {
+  background: transparent;
+  color: var(--ivory);
+  border-color: var(--ivory);
+}
+
+.btn-outline-light:hover {
+  background: rgba(248, 245, 239, 0.12);
+}
+
+/* --- Accessible focus ring (PRD §10) --- */
+:focus-visible {
+  outline: 2px solid var(--antique-gold);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Reveal-on-scroll base state (PRD §6) --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 400ms var(--ease), transform 400ms var(--ease);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- Reduced motion (PRD §6, §10) --- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

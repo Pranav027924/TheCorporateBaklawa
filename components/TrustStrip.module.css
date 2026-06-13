@@ -1,0 +1,49 @@
+.section {
+  background: var(--white);
+  padding-block: var(--space-xl);
+  border-top: 1px solid var(--warm-gray);
+  border-bottom: 1px solid var(--warm-gray);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  text-align: center;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding-block: var(--space-sm);
+}
+
+.value {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.75rem, 6vw, 3.5rem);
+  line-height: 1;
+  color: var(--forest-green);
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.6875rem;
+  color: var(--charcoal);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Thin vertical rules between stats (PRD §4.9) */
+  .stat + .stat {
+    border-left: 1px solid var(--warm-gray);
+  }
+}

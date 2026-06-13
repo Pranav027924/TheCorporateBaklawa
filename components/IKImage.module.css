@@ -1,0 +1,33 @@
+.placeholder {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(
+    135deg,
+    var(--warm-gray) 0%,
+    #cfc9bd 50%,
+    var(--warm-gray) 100%
+  );
+  color: var(--forest-green);
+  overflow: hidden;
+}
+
+.diamond {
+  font-size: 1.5rem;
+  color: var(--antique-gold);
+  opacity: 0.8;
+}
+
+.placeholderLabel {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.6875rem;
+  color: rgba(26, 60, 46, 0.55);
+  text-align: center;
+  padding-inline: 1rem;
+}

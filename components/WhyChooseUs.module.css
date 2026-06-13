@@ -1,0 +1,87 @@
+.section {
+  background: var(--forest-green);
+  padding-block: var(--space-2xl);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.eyebrow {
+  color: var(--antique-gold);
+  margin-bottom: var(--space-xs);
+}
+
+.title {
+  color: var(--ivory);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+}
+
+/* Flex wrap centers the trailing row → 3 on top, 2 centered below (PRD §4.5) */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.card {
+  flex: 1 1 calc((100% - var(--space-md)) / 2);
+  max-width: 320px;
+  text-align: center;
+  padding: var(--space-lg) var(--space-md);
+  border-radius: var(--radius-card);
+  border-bottom: 2px solid transparent;
+  background: rgba(255, 255, 255, 0.02);
+  transition: transform 200ms var(--ease), border-color 200ms var(--ease),
+    background-color 200ms var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-bottom-color: var(--antique-gold);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.iconCircle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--deep-maroon);
+  margin-bottom: var(--space-md);
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  color: var(--antique-gold);
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--ivory);
+  margin-bottom: var(--space-xs);
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.875rem;
+  color: rgba(248, 245, 239, 0.75);
+  max-width: 24ch;
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .card {
+    flex-basis: calc((100% - 2 * var(--space-md)) / 3);
+  }
+}

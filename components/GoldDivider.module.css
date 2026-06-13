@@ -1,0 +1,45 @@
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding-block: var(--space-xl);
+}
+
+.line {
+  display: block;
+  width: 0;
+  height: 1px;
+  background: var(--antique-gold);
+  transition: width 600ms ease-out;
+}
+
+.divider.visible .line {
+  width: 60px;
+}
+
+.diamond {
+  font-size: 10px;
+  line-height: 1;
+  color: var(--antique-gold);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 400ms ease-out 150ms, transform 400ms ease-out 150ms;
+}
+
+.divider.visible .diamond {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line {
+    width: 60px;
+    transition: none;
+  }
+  .diamond {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

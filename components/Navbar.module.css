@@ -1,0 +1,188 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color 300ms var(--ease), border-color 300ms var(--ease);
+}
+
+.navbar.scrolled {
+  background: var(--forest-green);
+  border-bottom-color: var(--antique-gold);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  height: var(--navbar-height);
+}
+
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logoImg {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logoText {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--ivory);
+  letter-spacing: 0.01em;
+}
+
+/* Desktop nav links */
+.links {
+  display: none;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.link {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--ivory);
+  letter-spacing: 0.02em;
+  padding-block: 0.25rem;
+  position: relative;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: var(--antique-gold);
+  transition: width 200ms var(--ease);
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+/* CTA button — Forest Green fill, gold text + border (PRD §4.1) */
+.cta {
+  display: none;
+  background: var(--forest-green);
+  color: var(--antique-gold);
+  border: 1px solid var(--antique-gold);
+  padding: 0.7rem 1.4rem;
+}
+
+.cta:hover {
+  background: var(--antique-gold);
+  color: var(--forest-green);
+}
+
+/* Hamburger */
+.hamburger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+}
+
+.bar {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--ivory);
+  border-radius: 2px;
+  transition: transform 250ms var(--ease), opacity 200ms var(--ease);
+}
+
+.barTop {
+  transform: translateY(7px) rotate(45deg);
+}
+.barMid {
+  opacity: 0;
+}
+.barBot {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Drawer + overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 31, 31, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 250ms var(--ease), visibility 250ms var(--ease);
+  z-index: 90;
+}
+
+.overlayOpen {
+  opacity: 1;
+  visibility: visible;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(82vw, 340px);
+  background: var(--forest-green);
+  border-left: 1px solid var(--antique-gold);
+  z-index: 95;
+  transform: translateX(100%);
+  transition: transform 300ms var(--ease);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding: calc(var(--navbar-height) + var(--space-md)) var(--space-lg)
+    var(--space-lg);
+}
+
+.drawerOpen {
+  transform: translateX(0);
+}
+
+.drawerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.drawerLink {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+  color: var(--ivory);
+}
+
+.drawerCta {
+  margin-top: auto;
+  width: 100%;
+}
+
+/* Desktop layout */
+@media (min-width: 1024px) {
+  .links,
+  .cta {
+    display: inline-flex;
+  }
+  .hamburger {
+    display: none;
+  }
+}
