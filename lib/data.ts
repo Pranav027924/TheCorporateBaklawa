@@ -89,7 +89,7 @@ export const hero = {
   body: "Curated gifting solutions for every milestone, occasion, and brand moment — delivered across India.",
   primaryCta: { label: "Get a Quote", href: "#contact" },
   secondaryCta: { label: "Browse Collections", href: "#collections" },
-  backgroundImage: "", // IMAGE SLOT — hero lifestyle shot (right panel)
+  backgroundImage: "https://ik.imagekit.io/2ljwse2ip/ChatGPT%20Image%20Jun%2013,%202026,%2004_39_57%20PM.png", // IMAGE SLOT — hero lifestyle shot (right panel)
   backgroundAlt: "Curated corporate gift boxes elegantly arranged",
   highlights: ["Pan-India Delivery", "Full Customization", "End-to-End Service"],
 };
