@@ -1,53 +1,66 @@
 .hero {
   position: relative;
-  min-height: 680px;
-  height: 100vh;
+  background: var(--forest-green);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+/* ---------------- Content panel ---------------- */
+.panel {
+  position: relative;
+  background: var(--forest-green);
   display: flex;
   align-items: center;
   overflow: hidden;
-}
-
-.bgImage,
-.bgFallback {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-}
-
-.bgFallback {
-  background: radial-gradient(
-      ellipse at 30% 20%,
-      rgba(92, 26, 26, 0.55),
-      transparent 60%
-    ),
-    linear-gradient(135deg, #14302440 0%, var(--forest-green) 100%),
-    var(--forest-green);
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: var(--hero-overlay);
-  z-index: 1;
-}
-
-.content {
-  position: relative;
-  z-index: 2;
-  max-width: var(--content-max);
   padding-top: var(--navbar-height);
 }
 
-.inner {
-  max-width: 640px;
+/* Soft maroon glow + faint gold hairline for depth */
+.panel::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 60%;
+  height: 70%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(92, 26, 26, 0.45),
+    transparent 70%
+  );
+  pointer-events: none;
 }
 
-.label {
+.panelInner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 600px;
+  margin-inline: auto;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
   color: var(--antique-gold);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.kickerLine {
+  display: block;
+  width: 38px;
+  height: 1px;
+  background: var(--antique-gold);
 }
 
 .headline {
@@ -55,9 +68,9 @@
   font-style: italic;
   font-weight: 600;
   color: var(--ivory);
-  font-size: clamp(2.625rem, 7vw, 4.5rem);
-  line-height: 1.08;
-  max-width: 16ch;
+  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+  line-height: 1.06;
+  max-width: 14ch;
   margin-bottom: var(--space-md);
 }
 
@@ -66,7 +79,7 @@
   font-weight: 300;
   font-size: 1.125rem;
   color: rgba(248, 245, 239, 0.85);
-  max-width: 46ch;
+  max-width: 44ch;
   margin-bottom: var(--space-lg);
 }
 
@@ -76,44 +89,125 @@
   gap: var(--space-sm);
 }
 
-/* Load animation: fade + slide up, 150ms stagger (PRD §4.2, §6) */
-.fadeUp {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 600ms var(--ease) forwards;
-}
-.delay1 {
-  animation-delay: 150ms;
-}
-.delay2 {
-  animation-delay: 300ms;
-}
-.delay3 {
-  animation-delay: 450ms;
+/* Gold diamond rule (echoes the brand divider motif) */
+.rule {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-md);
 }
 
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: none;
-  }
+.ruleLine {
+  display: block;
+  width: 44px;
+  height: 1px;
+  background: rgba(201, 168, 76, 0.6);
 }
 
-/* Scroll hint */
+.ruleDiamond {
+  font-size: 9px;
+  line-height: 1;
+  color: var(--antique-gold);
+}
+
+.highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+}
+
+.highlight {
+  position: relative;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.6875rem;
+  color: rgba(248, 245, 239, 0.7);
+}
+
+.highlight:not(:last-child)::after {
+  content: "•";
+  position: absolute;
+  right: -0.85rem;
+  color: var(--antique-gold);
+}
+
+/* ---------------- Media panel ---------------- */
+.media {
+  position: relative;
+  min-height: 52vh;
+  overflow: hidden;
+}
+
+.mediaImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mediaPlaceholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: linear-gradient(
+    135deg,
+    var(--warm-gray) 0%,
+    #cfc9bd 55%,
+    var(--warm-gray) 100%
+  );
+}
+
+.placeholderDiamond {
+  font-size: 1.6rem;
+  color: var(--antique-gold);
+  opacity: 0.85;
+}
+
+.placeholderLabel {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.6875rem;
+  color: rgba(26, 60, 46, 0.55);
+}
+
+/* Subtle green tint at the seam to blend the two panels */
+.mediaTint {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(26, 60, 46, 0.35) 0%,
+    transparent 22%
+  );
+  pointer-events: none;
+}
+
+/* ---------------- Scroll hint ---------------- */
 .scrollHint {
   position: absolute;
-  bottom: var(--space-lg);
+  bottom: var(--space-md);
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
-  width: 28px;
-  height: 44px;
+  z-index: 3;
+  width: 26px;
+  height: 42px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   border: 1px solid rgba(248, 245, 239, 0.5);
   border-radius: var(--radius-pill);
   padding-top: 8px;
+  background: rgba(26, 60, 46, 0.25);
 }
 
 .chevron {
@@ -130,12 +224,66 @@
     opacity: 1;
   }
   70% {
-    transform: translateY(14px);
+    transform: translateY(13px);
     opacity: 0;
   }
   100% {
     transform: translateY(0);
     opacity: 0;
+  }
+}
+
+/* ---------------- Load animation ---------------- */
+.fadeUp {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeUp 600ms var(--ease) forwards;
+}
+.d1 {
+  animation-delay: 120ms;
+}
+.d2 {
+  animation-delay: 240ms;
+}
+.d3 {
+  animation-delay: 360ms;
+}
+.d4 {
+  animation-delay: 480ms;
+}
+
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------------- Desktop split ---------------- */
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 1.04fr 0.96fr;
+    min-height: max(680px, 100vh);
+  }
+
+  .panelInner {
+    margin-right: var(--space-xl);
+    padding-block: var(--space-2xl);
+  }
+
+  .media {
+    min-height: 100%;
+  }
+
+  .scrollHint {
+    left: auto;
+    right: calc(50% - 13px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .panelInner {
+    max-width: 620px;
   }
 }
 

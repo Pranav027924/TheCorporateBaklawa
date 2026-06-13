@@ -89,8 +89,9 @@ export const hero = {
   body: "Curated gifting solutions for every milestone, occasion, and brand moment — delivered across India.",
   primaryCta: { label: "Get a Quote", href: "#contact" },
   secondaryCta: { label: "Browse Collections", href: "#collections" },
-  backgroundImage: "", // IMAGE SLOT — full-bleed hero lifestyle shot
+  backgroundImage: "", // IMAGE SLOT — hero lifestyle shot (right panel)
   backgroundAlt: "Curated corporate gift boxes elegantly arranged",
+  highlights: ["Pan-India Delivery", "Full Customization", "End-to-End Service"],
 };
 
 /* --- Who We Are (PRD §4.4) ---------------------------------------------- */
